@@ -1,0 +1,130 @@
+
+
+/* Navagation Bar*/
+
+.navbar {
+    background: lightblue;
+    display: flex;
+    align-items:left;
+    padding:10px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+
+.nav-links li {
+    position: relative;
+    padding: 10px;
+}
+
+.nav-links a{
+    color: black;
+}
+
+.nav-links a:hover {
+    color: yellow;
+}
+
+.dropdown-menu {
+    position: absolute;
+    display: none;
+    top: 20px;
+    left: 0px;
+    background:  lightblue;
+    list-style: none;
+    justify-content: center;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+/* Contact Page */
+
+.contact-page {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.contact-form label {
+  font-weight: bold;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Hero / Jumbotron */
+
+.hero {
+  background-color: #eef7fb;
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.hero h1 {
+  font-size: 48px;
+  margin-bottom: 15px;
+}
+
+.hero p {
+  font-size: 18px;
+  max-width: 650px;
+  margin: 0 auto 25px;
+  line-height: 1.5;
+}
+
+.hero-btn {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: #0077cc;
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  border-radius: 6px;
+}
+
+.hero-btn:hover {
+  background-color: #005fa3;
+}
+
+/* Games Page */
+
+.games-page {
+  padding: 30px 20px;
+}
+
+.games-intro {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.games-intro h2 {
+  font-size: 36px;
+  margin-bottom: 8px;
+}
+
+.games-intro p {
+  font-size: 18px;
+  color: #555;
+}

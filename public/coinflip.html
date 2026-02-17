@@ -14,7 +14,6 @@
 
     <header class="site-header">
         <h1>Steph's Mini Arcade</h1>
-        <p>Simple games built with HTML, CSS, and JavaScript</p>
 
 
     </header>
@@ -50,12 +49,13 @@
           <h1 class="h3 mb-2">Coin Flip Game</h1>
           <p class="text-muted mb-4">Heads or tails, then click flip.</p>
 
+            <!-- Game buttons -->
           <div class="d-flex justify-content-center flex-wrap gap-2 mb-3">
-            <button class="btn btn-primary" onclick="pick('heads')">Heads</button>
-            <button class="btn btn-primary" onclick="pick('tails')">Tails</button>
-            <button class="btn btn-success" onclick="flipCoin()">Flip Coin</button>
+            <button class="btn btn-primary" onclick="play('heads')">Heads</button>
+            <button class="btn btn-primary" onclick="play('tails')">Tails</button>
             <button class="btn btn-outline-danger" onclick="resetGame()">Reset</button>
-          </div>
+        </div>
+
 
           <div id="result" class="alert alert-info mb-3"></div>
 
@@ -75,54 +75,44 @@
 
 
     <script>
-        
-        let choice = null;
-        let you = 0;
-        let cpu = 0;
 
-        // create a function that stores result of choice
-        function pick(a) {
-            choice = a;
-            document.getElementById("result").textContent = "You picked " + a + ". FLIP!";
+    let you = 0;
+    let cpu = 0;
+
+    // Main game function
+    function play(choice) {
+
+        //flip logic: 50% chance for heads or tails
+        const flip = Math.random() < 0.5 ? "heads" : "tails";
+
+        // Check if user choice matches the flip result
+        if (flip === choice) {
+            you++;
+            document.getElementById("result").innerHTML =
+                "It was " + flip + ". Congrats, you WIN! <br> Click again to play.";
+        } else {
+            cpu++;
+            document.getElementById("result").innerHTML =
+                "It was " + flip + ". You LOSE. <br> Click again to play.";
         }
 
-        // Create a function that flips coin
-        function flipCoin() {
-            // if user didnt choose, prompt them to chose.
-            if(!choice) {
-                document.getElementById("result").textContent = "Pick Heads or Tails.";
-                return;
-            }
+        document.getElementById("you").textContent = you;
+        document.getElementById("cpu").textContent = cpu;
+    }
 
-            const flip = Math.random() < 0.5 ? "heads" : "tails";
+    // Reset game function
+    function resetGame() {
+        you = 0;
+        cpu = 0;
 
-            //if flip is the same as choice give them points and tell them they won.
-            if(flip === choice) {
-                you++;
-                document.getElementById("result").innerHTML = "It was " + flip + ". Congrats, you WIN. <br> Click Heads or Tails to Play again."
-            }
-            //if flip doesnt match choice they lose and tell them
-            else {
-                cpu++;
-                document.getElementById("result").innerHTML = "It was " + flip + ". You LOSE. <br> Click Heads or Tails to Play again."
-            }
-            
-            // display players points
-            document.getElementById("you").textContent = you;
-            document.getElementById("cpu").textContent = cpu;
-        }
-        
-        // Create a function that resets game
-        function resetGame() {
-            choice = null;
-            you = 0;
-            cpu = 0;
-            document.getElementById("you").textContent = 0;
-            document.getElementById("cpu").textContent = 0;
-            document.getElementById("result").textContent = "New Game, Heads or tails.";
-        }
-    
-    </script>
+        document.getElementById("you").textContent = 0;
+        document.getElementById("cpu").textContent = 0;
+        document.getElementById("result").textContent =
+            "New Game. Click Heads or Tails.";
+    }
+
+</script>
+
 
     <footer class="site-footer">
         <p>&copy; 2026 Stephanie Gallo</p>
